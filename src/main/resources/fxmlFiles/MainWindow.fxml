@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainWindowController">
+   <children>
+      <MenuBar StackPane.alignment="TOP_CENTER">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <Button fx:id="FV" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="Wystaw fakturę" StackPane.alignment="TOP_LEFT">
+         <StackPane.margin>
+            <Insets left="40.0" top="60.0" />
+         </StackPane.margin>
+      </Button>
+      <Button fx:id="addClient" mnemonicParsing="false" onAction="#addClientWindow" prefHeight="80.0" prefWidth="100.0" text="Dodaj klienta" StackPane.alignment="TOP_LEFT">
+         <StackPane.margin>
+            <Insets left="160.0" top="60.0" />
+         </StackPane.margin>
+      </Button>
+      <Button fx:id="findFV" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="Znajdź fakturę" StackPane.alignment="TOP_LEFT">
+         <StackPane.margin>
+            <Insets left="40.0" top="160.0" />
+         </StackPane.margin>
+      </Button>
+      <Button fx:id="edit" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="Edytuj dane" textOverrun="CLIP" StackPane.alignment="TOP_LEFT">
+         <StackPane.margin>
+            <Insets left="160.0" top="160.0" />
+         </StackPane.margin>
+      </Button>
+      <TableView fx:id="listaKlientow" prefHeight="200.0" prefWidth="200.0" StackPane.alignment="TOP_LEFT">
+         <columns>
+            <TableColumn prefWidth="37.0" text="l.p." />
+            <TableColumn fx:id="nip" prefWidth="106.0" text="NIP" />
+            <TableColumn prefWidth="156.0" text="Nazwa" />
+         </columns>
+         <StackPane.margin>
+            <Insets left="300.0" top="25.0" />
+         </StackPane.margin>
+      </TableView>
+   </children>
+</StackPane>
