@@ -1,7 +1,9 @@
 package controllers;
 
+import data.CURL;
 import data.CompanyData;
 import data.CompanyList;
+import data.JSON;
 import properties.Company;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -45,6 +47,8 @@ public class ClientWindowController {
 
     @FXML
     private Label companyNipLabel;
+    @FXML
+    private Button findCompanyButton;
 
 
     private Company company = new Company();
@@ -62,8 +66,8 @@ public class ClientWindowController {
         companyPostalCodeLabel.visibleProperty().bind(company.isCompanyPostalCodeOKProperty());
         companyNipLabel.visibleProperty().bind(company.isCompanyNIPOkProperty());
         saveCompany.disableProperty().bind(company.isButtonProperty());
+        findCompanyButton.disableProperty().bind((company.isButtonFindProperty()));
     }
-
 
 
     public void saveAndAddNewCompany(){
@@ -71,6 +75,15 @@ public class ClientWindowController {
         infoAfterSave.setText("Dodano nową firmę.");
     }
 
+    public void findCompanyInKRSByNIP(){
+        JSON json = new JSON();
+        json.getJson();
+        company.setCompanyNameProperty(json.getCompanyName());
+        company.setCompanyStreetProperty(json.getCompanyStreet());
+        company.setCompanyCityProperty(json.getCompanyCity());
+        company.setCompanyPostalCodeProperty(json.getCompanyPostalCode());
+
+    }
 
 
 }

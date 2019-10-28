@@ -17,10 +17,10 @@
       <TextField fx:id="companyPostalCode" layoutX="225.0" layoutY="87.0" prefHeight="25.0" prefWidth="137.0" />
       <TextField fx:id="companyNIP" layoutX="14.0" layoutY="200.0" prefHeight="25.0" prefWidth="348.0" />
       <Label layoutX="14.0" layoutY="183.0" text="NIP" />
-      <Button layoutX="170.0" layoutY="275.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="anuluj" />
-      <Button layoutX="238.0" layoutY="275.0" mnemonicParsing="false" text="wyszukaj" />
-      <Button fx:id="saveCompany" layoutX="306.0" layoutY="275.0" mnemonicParsing="false" onAction="#saveAndAddNewCompany" prefHeight="25.0" prefWidth="63.0" text="zapisz" />
-      <Label fx:id="infoAfterSave" layoutX="38.0" layoutY="318.0" prefHeight="43.0" prefWidth="299.0" />
+      <Button layoutX="105.0" layoutY="275.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" text="anuluj" />
+      <Button fx:id="findCompanyButton" layoutX="105.0" layoutY="306.0" mnemonicParsing="false" onAction="#findCompanyInKRSByNIP" prefHeight="25.0" prefWidth="264.0" text="wyszukaj po numerze NIP w KRS" />
+      <Button fx:id="saveCompany" layoutX="240.0" layoutY="275.0" mnemonicParsing="false" onAction="#saveAndAddNewCompany" prefHeight="25.0" prefWidth="129.0" text="zapisz" />
+      <Label fx:id="infoAfterSave" layoutX="30.0" layoutY="343.0" prefHeight="43.0" prefWidth="299.0" />
       <Label fx:id="companyNameLabel" layoutX="369.0" layoutY="35.0" text="OK" textFill="#2fe40f" />
       <Label fx:id="comapnyStreetLabel" layoutX="200.0" layoutY="91.0" text="OK" textFill="#2fe40f" />
       <Label fx:id="companyPostalCodeLabel" layoutX="369.0" layoutY="91.0" text="OK" textFill="#2fe40f" />

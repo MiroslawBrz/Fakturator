@@ -18,15 +18,16 @@ public class Company {
     private BooleanProperty companyPostalCodeOKProperty = new SimpleBooleanProperty(false);
     private BooleanProperty companyNIPOkProperty = new SimpleBooleanProperty(false);
     private BooleanProperty buttonProperty = new SimpleBooleanProperty(false);
+    private BooleanProperty buttonFindProperty = new SimpleBooleanProperty(false);
 
     public Company(){
         companyNameOkProperty.bind(companyNameProperty.isNotEmpty());
         companyStreetOkProperty.bind(companyStreetProperty.isNotEmpty());
         companyCityOkProperty.bind(companyCityProperty.isNotEmpty());
         companyPostalCodeOKProperty.bind(companyPostalCodeProperty.isNotEmpty());
-        companyNIPOkProperty.bind(companyNIP.isNotEmpty());
+        companyNIPOkProperty.bind(companyNIP.length().isEqualTo(10));
         buttonProperty.bind(companyNameProperty.isEmpty().or(companyStreetProperty.isEmpty().or(companyCityProperty.isEmpty().or(companyPostalCodeProperty.isEmpty().or(companyNIP.isEmpty())))));
-
+        buttonFindProperty.bind(companyNIPOkProperty.not());
     }
 
 
@@ -97,5 +98,14 @@ public class Company {
     }
     public void setButtonProperty(boolean buttonProperty) {
         this.buttonProperty.set(buttonProperty);
+    }
+
+
+    public BooleanProperty isButtonFindProperty() {
+        return buttonFindProperty;
+    }
+
+    public void setButtonFindProperty(boolean buttonFindProperty) {
+        this.buttonFindProperty.set(buttonFindProperty);
     }
 }
