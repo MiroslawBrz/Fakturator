@@ -1,6 +1,6 @@
 package controllers;
 
-import data.Company;
+import properties.Company;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -29,11 +29,40 @@ public class ClientWindowController {
     @FXML
     private Label infoAfterSave;
 
+    @FXML
+    private Label companyNameLabel;
 
+    @FXML
+    private Label comapnyStreetLabel;
+
+    @FXML
+    private Label companyPostalCodeLabel;
+
+    @FXML
+    private Label companyCityLabel;
+
+    @FXML
+    private Label companyNipLabel;
+
+
+    private Company company = new Company();
+
+    public void initialize(){
+        companyName.textProperty().bindBidirectional(company.getCompanyNameProperty());
+        companyStreet.textProperty().bindBidirectional(company.getCompanyStreetProperty());
+        companyCity.textProperty().bindBidirectional(company.getCompanyCityProperty());
+        companyPostalCode.textProperty().bindBidirectional(company.getCompanyPostalCodeProperty());
+        companyNIP.textProperty().bindBidirectional(company.getCompanyNIP());
+        companyNameLabel.visibleProperty().bind(company.isCompanyNameOkProperty());
+        comapnyStreetLabel.visibleProperty().bind(company.isCompanyStreetOkProperty());
+        companyCityLabel.visibleProperty().bind(company.isCompanyCityOkProperty());
+        companyPostalCodeLabel.visibleProperty().bind(company.isCompanyPostalCodeOKProperty());
+        companyNipLabel.visibleProperty().bind(company.isCompanyNIPOkProperty());
+        saveCompany.disableProperty().bind(company.isButtonProperty());
+    }
 
     public void saveNewCompany(){
-        Company company = new Company(companyName.getText(), companyStreet.getText(), companyCity.getText(), companyPostalCode.getText(), companyNIP.getText());
-        infoAfterSave.setText(company.toString());
+
     }
 
 }
