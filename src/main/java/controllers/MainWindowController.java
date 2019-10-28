@@ -16,4 +16,12 @@ public class MainWindowController {
         stage.setScene(new Scene(root));
         stage.show();
     }
+
+    public void editClientWindow() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxmlFiles/EditClientWindow.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("Wprowadź dane klienta");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 }

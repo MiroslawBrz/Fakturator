@@ -1,5 +1,7 @@
 package controllers;
 
+import data.CompanyData;
+import data.CompanyList;
 import properties.Company;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -46,6 +48,7 @@ public class ClientWindowController {
 
 
     private Company company = new Company();
+    private CompanyList companyList = new CompanyList();
 
     public void initialize(){
         companyName.textProperty().bindBidirectional(company.getCompanyNameProperty());
@@ -61,8 +64,13 @@ public class ClientWindowController {
         saveCompany.disableProperty().bind(company.isButtonProperty());
     }
 
-    public void saveNewCompany(){
 
+
+    public void saveAndAddNewCompany(){
+        companyList.addCompany();
+        infoAfterSave.setText("Dodano nową firmę.");
     }
+
+
 
 }
