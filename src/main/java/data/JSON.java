@@ -1,63 +1,67 @@
 package data;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import org.json.JSONArray;
 import org.json.JSONObject;
+
 
 public class JSON {
 
-    private String companyName;
-    private String companyStreet;
-    private String companyBuildingNumber;
-    private String companyCity;
-    private String companyPostalCode;
+    private StringProperty name = new SimpleStringProperty();
+    private StringProperty street = new SimpleStringProperty();
+    private StringProperty postalCode = new SimpleStringProperty();
+    private StringProperty city = new SimpleStringProperty();
 
     CURL curl = new CURL();
 
 
-    public void getJson(){
-        curl.getDataFromApiByNIP();
-        String json = curl.getResult();
-        System.out.println(json);
+    public void getStringFromAPIbyNIPAndParseJson(String NIP) {
+        JSONObject jsonObject = new JSONObject(curl.getDataFromApiByNIP(NIP));
+        JSONArray jsonArray = (JSONArray) jsonObject.get("items");
+        for (int i = 0; i < jsonArray.length(); i++){
+        name.setValue(jsonArray.getJSONObject(i).getString("name"));
+        JSONObject jsonAddress = jsonArray.getJSONObject(i).getJSONObject("address");
+        city.setValue(jsonAddress.getString("city"));
+        postalCode.setValue(jsonAddress.getString("code"));
+        street.setValue(jsonAddress.getString("street"));
+        }
 
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public StringProperty getName() {
+        return name;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setName(String name) {
+        this.name.set(name);
     }
 
-    public String getCompanyStreet() {
-        return companyStreet;
+
+    public StringProperty getStreet() {
+        return street;
     }
 
-    public void setCompanyStreet(String companyStreet) {
-        this.companyStreet = companyStreet;
+    public void setStreet(String street) {
+        this.street.set(street);
     }
 
-    public String getCompanyBuildingNumber() {
-        return companyBuildingNumber;
+
+    public StringProperty getPostalCode() {
+        return postalCode;
     }
 
-    public void setCompanyBuildingNumber(String companyBuildingNumber) {
-        this.companyBuildingNumber = companyBuildingNumber;
+    public void setPostalCode(String postalCode) {
+        this.postalCode.set(postalCode);
     }
 
-    public String getCompanyCity() {
-        return companyCity;
+
+
+    public StringProperty getCity() {
+        return city;
     }
 
-    public void setCompanyCity(String companyCity) {
-        this.companyCity = companyCity;
+    public void setCity(String city) {
+        this.city.set(city);
     }
-
-    public String getCompanyPostalCode() {
-        return companyPostalCode;
-    }
-
-    public void setCompanyPostalCode(String companyPostalCode) {
-        this.companyPostalCode = companyPostalCode;
-    }
-
 }

@@ -54,6 +54,7 @@ public class ClientWindowController {
     private Company company = new Company();
     private CompanyList companyList = new CompanyList();
 
+
     public void initialize(){
         companyName.textProperty().bindBidirectional(company.getCompanyNameProperty());
         companyStreet.textProperty().bindBidirectional(company.getCompanyStreetProperty());
@@ -77,11 +78,12 @@ public class ClientWindowController {
 
     public void findCompanyInKRSByNIP(){
         JSON json = new JSON();
-        json.getJson();
-        company.setCompanyNameProperty(json.getCompanyName());
-        company.setCompanyStreetProperty(json.getCompanyStreet());
-        company.setCompanyCityProperty(json.getCompanyCity());
-        company.setCompanyPostalCodeProperty(json.getCompanyPostalCode());
+        String s = companyNIP.getText();
+        json.getStringFromAPIbyNIPAndParseJson(s);
+        companyName.textProperty().bindBidirectional(json.getName());
+        companyStreet.textProperty().bindBidirectional(json.getStreet());
+        companyCity.textProperty().bindBidirectional(json.getCity());
+        companyPostalCode.textProperty().bindBidirectional(json.getPostalCode());
 
     }
 
