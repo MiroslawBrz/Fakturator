@@ -1,14 +1,14 @@
 package controllers;
 
-import data.CURL;
-import data.CompanyData;
-import data.CompanyList;
+import data.CompanyToDB;
 import data.JSON;
 import properties.Company;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+
+import java.sql.SQLException;
 
 public class ClientWindowController {
 
@@ -52,7 +52,7 @@ public class ClientWindowController {
 
 
     private Company company = new Company();
-    private CompanyList companyList = new CompanyList();
+    private CompanyToDB companyToDB = new CompanyToDB();
 
 
     public void initialize(){
@@ -71,9 +71,16 @@ public class ClientWindowController {
     }
 
 
-    public void saveAndAddNewCompany(){
-        companyList.addCompany();
-        infoAfterSave.setText("Dodano nową firmę.");
+    public void saveAndAddNewCompany() throws SQLException {
+        String name = companyName.getText();
+        String NIP = companyNIP.getText();
+        String street = companyStreet.getText();
+        String postalCode = companyPostalCode.getText();
+        String city = companyCity.getText();
+        CompanyToDB companyToDB = new CompanyToDB();
+        companyToDB.saveNewCompany(name, street, postalCode, city, NIP);
+
+        infoAfterSave.setText(companyToDB.messege);
     }
 
     public void findCompanyInKRSByNIP(){
@@ -84,6 +91,7 @@ public class ClientWindowController {
         companyStreet.textProperty().bindBidirectional(json.getStreet());
         companyCity.textProperty().bindBidirectional(json.getCity());
         companyPostalCode.textProperty().bindBidirectional(json.getPostalCode());
+
 
     }
 

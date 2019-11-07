@@ -12,11 +12,13 @@ public class JSON {
     private StringProperty street = new SimpleStringProperty();
     private StringProperty postalCode = new SimpleStringProperty();
     private StringProperty city = new SimpleStringProperty();
+    private StringProperty nip = new SimpleStringProperty();
 
     CURL curl = new CURL();
 
 
     public void getStringFromAPIbyNIPAndParseJson(String NIP) {
+        nip.setValue(NIP);
         JSONObject jsonObject = new JSONObject(curl.getDataFromApiByNIP(NIP));
         JSONArray jsonArray = (JSONArray) jsonObject.get("items");
         for (int i = 0; i < jsonArray.length(); i++){
@@ -63,5 +65,14 @@ public class JSON {
 
     public void setCity(String city) {
         this.city.set(city);
+    }
+
+
+    public StringProperty getNIP() {
+        return nip;
+    }
+
+    public void setNIP(String NIP) {
+        this.nip.set(NIP);
     }
 }

@@ -8,9 +8,10 @@ import javafx.stage.Stage;
 
 public class MainWindow extends Application {
 
+    public static void main(String[] args)  {
 
-    public static void main(String[] args) {
-        launch(args);
+       DBConnector.connect();
+       launch(args);
     }
 
     public void start(Stage primaryStage) throws Exception {

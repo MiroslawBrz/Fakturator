@@ -2,8 +2,9 @@ data\CURL.class
 controllers\EditClientWindowController.class
 data\CompanyData.class
 properties\Company.class
-controllers\MainWindowController.class
 data\JSON.class
 application\MainWindow.class
 controllers\ClientWindowController.class
 data\CompanyList.class
+application\DBConnector.class
+controllers\MainWindowController.class
