@@ -1,8 +1,8 @@
 package controllers;
 
-import data.CompanyToDB;
+import DB.CompanyToDB;
 import data.JSON;
-import properties.Company;
+import properties.CompanyProperties;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -51,23 +51,23 @@ public class ClientWindowController {
     private Button findCompanyButton;
 
 
-    private Company company = new Company();
+    private CompanyProperties companyProperties = new CompanyProperties();
     private CompanyToDB companyToDB = new CompanyToDB();
 
 
     public void initialize(){
-        companyName.textProperty().bindBidirectional(company.getCompanyNameProperty());
-        companyStreet.textProperty().bindBidirectional(company.getCompanyStreetProperty());
-        companyCity.textProperty().bindBidirectional(company.getCompanyCityProperty());
-        companyPostalCode.textProperty().bindBidirectional(company.getCompanyPostalCodeProperty());
-        companyNIP.textProperty().bindBidirectional(company.getCompanyNIP());
-        companyNameLabel.visibleProperty().bind(company.isCompanyNameOkProperty());
-        comapnyStreetLabel.visibleProperty().bind(company.isCompanyStreetOkProperty());
-        companyCityLabel.visibleProperty().bind(company.isCompanyCityOkProperty());
-        companyPostalCodeLabel.visibleProperty().bind(company.isCompanyPostalCodeOKProperty());
-        companyNipLabel.visibleProperty().bind(company.isCompanyNIPOkProperty());
-        saveCompany.disableProperty().bind(company.isButtonProperty());
-        findCompanyButton.disableProperty().bind((company.isButtonFindProperty()));
+        companyName.textProperty().bindBidirectional(companyProperties.getCompanyNameProperty());
+        companyStreet.textProperty().bindBidirectional(companyProperties.getCompanyStreetProperty());
+        companyCity.textProperty().bindBidirectional(companyProperties.getCompanyCityProperty());
+        companyPostalCode.textProperty().bindBidirectional(companyProperties.getCompanyPostalCodeProperty());
+        companyNIP.textProperty().bindBidirectional(companyProperties.getCompanyNIP());
+        companyNameLabel.visibleProperty().bind(companyProperties.isCompanyNameOkProperty());
+        comapnyStreetLabel.visibleProperty().bind(companyProperties.isCompanyStreetOkProperty());
+        companyCityLabel.visibleProperty().bind(companyProperties.isCompanyCityOkProperty());
+        companyPostalCodeLabel.visibleProperty().bind(companyProperties.isCompanyPostalCodeOKProperty());
+        companyNipLabel.visibleProperty().bind(companyProperties.isCompanyNIPOkProperty());
+        saveCompany.disableProperty().bind(companyProperties.isButtonProperty());
+        findCompanyButton.disableProperty().bind((companyProperties.isButtonFindProperty()));
     }
 
 

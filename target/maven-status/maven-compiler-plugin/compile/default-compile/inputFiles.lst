@@ -1,10 +1,11 @@
 C:\Users\miros\OneDrive\Pulpit\Fakturator\src\main\java\application\MainWindow.java
 C:\Users\miros\OneDrive\Pulpit\Fakturator\src\main\java\data\JSON.java
 C:\Users\miros\OneDrive\Pulpit\Fakturator\src\main\java\data\CURL.java
+C:\Users\miros\OneDrive\Pulpit\Fakturator\src\main\java\DB\CompanyFromDB.java
 C:\Users\miros\OneDrive\Pulpit\Fakturator\src\main\java\controllers\EditClientWindowController.java
-C:\Users\miros\OneDrive\Pulpit\Fakturator\src\main\java\data\CompanyList.java
-C:\Users\miros\OneDrive\Pulpit\Fakturator\src\main\java\properties\Company.java
-C:\Users\miros\OneDrive\Pulpit\Fakturator\src\main\java\data\CompanyData.java
+C:\Users\miros\OneDrive\Pulpit\Fakturator\src\main\java\DB\CompanyToDB.java
+C:\Users\miros\OneDrive\Pulpit\Fakturator\src\main\java\DB\DBConnector.java
+C:\Users\miros\OneDrive\Pulpit\Fakturator\src\main\java\DB\Company.java
 C:\Users\miros\OneDrive\Pulpit\Fakturator\src\main\java\controllers\MainWindowController.java
 C:\Users\miros\OneDrive\Pulpit\Fakturator\src\main\java\controllers\ClientWindowController.java
-C:\Users\miros\OneDrive\Pulpit\Fakturator\src\main\java\application\DBConnector.java
+C:\Users\miros\OneDrive\Pulpit\Fakturator\src\main\java\properties\CompanyProperties.java

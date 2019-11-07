@@ -1,8 +1,5 @@
-package data;
+package DB;
 
-import application.DBConnector;
-
-import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.sql.Statement;
 

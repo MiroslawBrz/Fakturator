@@ -1,10 +1,11 @@
+DB\DBConnector.class
 data\CURL.class
 controllers\EditClientWindowController.class
-data\CompanyData.class
-properties\Company.class
+DB\CompanyToDB.class
 data\JSON.class
 application\MainWindow.class
 controllers\ClientWindowController.class
-data\CompanyList.class
-application\DBConnector.class
+DB\Company.class
+properties\CompanyProperties.class
 controllers\MainWindowController.class
+DB\CompanyFromDB.class

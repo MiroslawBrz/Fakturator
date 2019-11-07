@@ -5,7 +5,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class Company {
+public class CompanyProperties {
 
     private StringProperty companyNameProperty = new SimpleStringProperty();
     private StringProperty companyStreetProperty = new SimpleStringProperty();
@@ -20,7 +20,7 @@ public class Company {
     private BooleanProperty buttonProperty = new SimpleBooleanProperty(false);
     private BooleanProperty buttonFindProperty = new SimpleBooleanProperty(false);
 
-    public Company(){
+    public CompanyProperties(){
         companyNameOkProperty.bind(companyNameProperty.isNotEmpty());
         companyStreetOkProperty.bind(companyStreetProperty.isNotEmpty());
         companyCityOkProperty.bind(companyCityProperty.isNotEmpty());
