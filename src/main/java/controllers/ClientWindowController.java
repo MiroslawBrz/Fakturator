@@ -39,6 +39,8 @@ public class ClientWindowController {
     private Button findCompanyButton;
 
 
+
+
     private CompanyProperties companyProperties = new CompanyProperties();
 
     public void initialize(){
@@ -58,15 +60,17 @@ public class ClientWindowController {
 
 
     public void saveAndAddNewCompany() {
+        CompanyToDB companyToDB = new CompanyToDB();
         String name = companyName.getText();
         String NIP = companyNIP.getText();
         String street = companyStreet.getText();
         String postalCode = companyPostalCode.getText();
         String city = companyCity.getText();
-        CompanyToDB companyToDB = new CompanyToDB();
-        companyToDB.saveNewCompany(name, street, postalCode, city, NIP);
 
+        companyToDB.saveNewCompany(name, street, postalCode, city, NIP);
         infoAfterSave.setText(companyToDB.messege);
+
+
     }
 
     public void findCompanyInKRSByNIP(){
@@ -79,7 +83,15 @@ public class ClientWindowController {
         companyPostalCode.textProperty().bindBidirectional(json.getPostalCode());
     }
 
-
-
+    public void updateCompany() {
+        String name = companyName.getText();
+        String NIP = companyNIP.getText();
+        String street = companyStreet.getText();
+        String postalCode = companyPostalCode.getText();
+        String city = companyCity.getText();
+        CompanyToDB companyToDB = new CompanyToDB();
+        companyToDB.updateNewCompany(name, street, postalCode, city, NIP);
+        infoAfterSave.setText(companyToDB.messege);
+    }
 
 }

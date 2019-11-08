@@ -1,8 +1,5 @@
 package DB;
 
-import javafx.beans.property.SimpleStringProperty;
-
-
 public class Company {
 
     private String NIP;
@@ -17,9 +14,6 @@ public class Company {
     public static String COMPANY_CITY;
     public static String COMPANY_POSTALCODE;
 
-    public Company(){
-
-    }
 
     public Company(String NIP, String companyName, String companyStreet, String companyCity, String companyPostalCode) {
         this.NIP = NIP;

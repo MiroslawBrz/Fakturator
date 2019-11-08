@@ -3,22 +3,15 @@ import DB.Company;
 import DB.CompanyFromDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
-import properties.CompanyProperties;
-
-
 import java.io.IOException;
-
 
 public class MainWindowController {
     @FXML
@@ -38,13 +31,9 @@ public class MainWindowController {
     @FXML
     private Button edit;
 
-
-
     private ObservableList <Company> data = FXCollections.observableArrayList();
 
-
     public void initialize() {
-
         CompaniesTable.setItems(data);
         this.CompanyNIPColumn.setCellValueFactory(new PropertyValueFactory<>("NIP"));
         this.CompanyNameColumn.setCellValueFactory(new PropertyValueFactory<>("companyName"));
@@ -71,9 +60,8 @@ public class MainWindowController {
         });
     }
 
-
-
     public void refreshListFromDB(){
+        data.clear();
         for (Object comp : CompanyFromDB.list){
             data.add((Company) comp);
         }
@@ -100,9 +88,5 @@ public class MainWindowController {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
-
-
-
-
-    }
+}
 

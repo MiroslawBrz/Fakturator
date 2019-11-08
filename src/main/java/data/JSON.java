@@ -26,9 +26,7 @@ public class JSON {
         JSONObject jsonAddress = jsonArray.getJSONObject(i).getJSONObject("address");
         city.setValue(jsonAddress.getString("city"));
         postalCode.setValue(jsonAddress.getString("code"));
-        String str = jsonAddress.getString("street");
-        String buildingNumber = jsonAddress.getString("house_no");
-        street.setValue(str + " " + buildingNumber);
+        street.setValue(jsonAddress.getString("street"));
         }
 
     }
