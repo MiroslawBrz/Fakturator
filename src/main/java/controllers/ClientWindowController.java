@@ -2,14 +2,12 @@ package controllers;
 
 import DB.CompanyToDB;
 import data.JSON;
-import javafx.scene.control.MenuItem;
 import properties.CompanyProperties;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-import java.sql.SQLException;
 
 public class ClientWindowController {
 

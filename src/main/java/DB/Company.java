@@ -11,6 +11,16 @@ public class Company {
     private String companyCity;
     private String companyPostalCode;
 
+    public static String sNIP;
+    public static String COMPANY_NAME;
+    public static String COMPANY_STREET;
+    public static String COMPANY_CITY;
+    public static String COMPANY_POSTALCODE;
+
+    public Company(){
+
+    }
+
     public Company(String NIP, String companyName, String companyStreet, String companyCity, String companyPostalCode) {
         this.NIP = NIP;
         this.companyName = companyName;

@@ -31,22 +31,6 @@ public class CompanyProperties {
     }
 
 
-    public String getCompanyName(){
-        return companyNameProperty.getValue();
-    }
-    public String getCompanyStreet(){
-        return companyStreetProperty.getValue();
-    }
-    public String getCompanyCity(){
-        return companyCityProperty.getValue();
-    }
-    public String getCompanyPostalCode(){
-        return companyPostalCodeProperty.getValue();
-    }
-    public String getCompanyNip(){
-        return companyNIP.getValue();
-    }
-
     public StringProperty getCompanyNameProperty() {
         return companyNameProperty;
     }

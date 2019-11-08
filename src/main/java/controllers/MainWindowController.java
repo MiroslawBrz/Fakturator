@@ -3,17 +3,18 @@ import DB.Company;
 import DB.CompanyFromDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
+import properties.CompanyProperties;
 
 
 import java.io.IOException;
@@ -35,7 +36,8 @@ public class MainWindowController {
     @FXML
     private Button closeButton;
     @FXML
-    private MenuItem menuItemClose;
+    private Button edit;
+
 
 
     private ObservableList <Company> data = FXCollections.observableArrayList();
@@ -51,8 +53,25 @@ public class MainWindowController {
         this.companyPostalCode.setCellValueFactory(new PropertyValueFactory<>("companyPostalCode"));
         refreshListFromDB();
 
-
+        CompaniesTable.setRowFactory(tv -> {
+            TableRow<Company> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY
+                        && event.getClickCount() == 1) {
+                    Company clickedRow = row.getItem();
+                    edit.setDisable(false);
+                    Company.sNIP = clickedRow.getNIP();
+                    Company.COMPANY_NAME = clickedRow.getCompanyName();
+                    Company.COMPANY_CITY = clickedRow.getCompanyCity();
+                    Company.COMPANY_STREET = clickedRow.getCompanyStreet();
+                    Company.COMPANY_POSTALCODE = clickedRow.getCompanyPostalCode();
+                }
+            });
+            return row;
+        });
     }
+
+
 
     public void refreshListFromDB(){
         for (Object comp : CompanyFromDB.list){
@@ -81,4 +100,9 @@ public class MainWindowController {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
-}
+
+
+
+
+    }
+
