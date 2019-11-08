@@ -2,6 +2,7 @@ package controllers;
 
 import DB.CompanyToDB;
 import data.JSON;
+import javafx.scene.control.MenuItem;
 import properties.CompanyProperties;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -14,37 +15,26 @@ public class ClientWindowController {
 
     @FXML
     private TextField companyName;
-
     @FXML
     private TextField companyStreet;
-
     @FXML
     private TextField companyCity;
-
     @FXML
     private TextField companyPostalCode;
-
     @FXML
     private TextField companyNIP;
-
     @FXML
     private Button saveCompany;
-
     @FXML
     private Label infoAfterSave;
-
     @FXML
     private Label companyNameLabel;
-
     @FXML
     private Label comapnyStreetLabel;
-
     @FXML
     private Label companyPostalCodeLabel;
-
     @FXML
     private Label companyCityLabel;
-
     @FXML
     private Label companyNipLabel;
     @FXML
@@ -52,8 +42,6 @@ public class ClientWindowController {
 
 
     private CompanyProperties companyProperties = new CompanyProperties();
-    private CompanyToDB companyToDB = new CompanyToDB();
-
 
     public void initialize(){
         companyName.textProperty().bindBidirectional(companyProperties.getCompanyNameProperty());
@@ -71,7 +59,7 @@ public class ClientWindowController {
     }
 
 
-    public void saveAndAddNewCompany() throws SQLException {
+    public void saveAndAddNewCompany() {
         String name = companyName.getText();
         String NIP = companyNIP.getText();
         String street = companyStreet.getText();
@@ -91,9 +79,9 @@ public class ClientWindowController {
         companyStreet.textProperty().bindBidirectional(json.getStreet());
         companyCity.textProperty().bindBidirectional(json.getCity());
         companyPostalCode.textProperty().bindBidirectional(json.getPostalCode());
-
-
     }
+
+
 
 
 }

@@ -26,7 +26,9 @@ public class JSON {
         JSONObject jsonAddress = jsonArray.getJSONObject(i).getJSONObject("address");
         city.setValue(jsonAddress.getString("city"));
         postalCode.setValue(jsonAddress.getString("code"));
-        street.setValue(jsonAddress.getString("street"));
+        String str = jsonAddress.getString("street");
+        String buildingNumber = jsonAddress.getString("house_no");
+        street.setValue(str + " " + buildingNumber);
         }
 
     }
@@ -34,45 +36,14 @@ public class JSON {
     public StringProperty getName() {
         return name;
     }
-
-    public void setName(String name) {
-        this.name.set(name);
-    }
-
-
     public StringProperty getStreet() {
         return street;
     }
-
-    public void setStreet(String street) {
-        this.street.set(street);
-    }
-
-
     public StringProperty getPostalCode() {
         return postalCode;
     }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode.set(postalCode);
-    }
-
-
-
     public StringProperty getCity() {
         return city;
     }
-
-    public void setCity(String city) {
-        this.city.set(city);
-    }
-
-
-    public StringProperty getNIP() {
-        return nip;
-    }
-
-    public void setNIP(String NIP) {
-        this.nip.set(NIP);
-    }
+    public StringProperty getNip(){return nip;}
 }

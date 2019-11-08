@@ -9,27 +9,8 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainWindowController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainWindowController">
    <children>
-      <MenuBar StackPane.alignment="TOP_CENTER">
-         <menus>
-            <Menu mnemonicParsing="false" text="File">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Close" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Delete" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
       <Button fx:id="FV" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="Wystaw fakturę" StackPane.alignment="TOP_LEFT">
          <StackPane.margin>
             <Insets left="40.0" top="60.0" />
@@ -50,15 +31,46 @@
             <Insets left="160.0" top="160.0" />
          </StackPane.margin>
       </Button>
+      <Button fx:id="refreshList" mnemonicParsing="false" onAction="#refreshListFromDB" prefHeight="80.0" prefWidth="100.0" text="Odśwież listę" textOverrun="CLIP" StackPane.alignment="TOP_LEFT">
+         <StackPane.margin>
+            <Insets left="160.0" top="500.0" />
+         </StackPane.margin>
+      </Button>
       <TableView fx:id="CompaniesTable" prefHeight="200.0" prefWidth="200.0" StackPane.alignment="TOP_LEFT">
          <columns>
-            <TableColumn fx:id="CompanyNIPColumn" prefWidth="37.0" text="NIP" />
-            <TableColumn fx:id="CompanyNameColumn" prefWidth="106.0" text="NAZWA" />
-            <TableColumn fx:id="companyCity" prefWidth="156.0" text="MIASTO" />
+            <TableColumn fx:id="CompanyNIPColumn" prefWidth="75.0" text="NIP" />
+            <TableColumn fx:id="CompanyNameColumn" prefWidth="174.0" text="NAZWA" />
+            <TableColumn fx:id="companyCity" prefWidth="98.0" text="MIASTO" />
+            <TableColumn fx:id="companyStreet" prefWidth="205.0" text="ULICA" />
+            <TableColumn fx:id="companyPostalCode" prefWidth="67.0" text="KOD POCZTOWY" />
          </columns>
          <StackPane.margin>
-            <Insets left="300.0" top="25.0" />
+            <Insets left="280.0" top="25.0" />
          </StackPane.margin>
       </TableView>
+      <MenuBar StackPane.alignment="TOP_CENTER">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem fx:id="menuItemClose" mnemonicParsing="false" onAction="#closeButtonAction" text="Zamknij" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <Button fx:id="closeButton" mnemonicParsing="false" onAction="#closeButtonAction" prefHeight="80.0" prefWidth="100.0" text="Zamknij" textOverrun="CLIP" StackPane.alignment="TOP_LEFT">
+         <StackPane.margin>
+            <Insets left="40.0" top="500.0" />
+         </StackPane.margin>
+      </Button>
    </children>
 </StackPane>
