@@ -1,5 +1,6 @@
 package DB;
 import java.util.Date;
+import java.util.List;
 
 
 public class Receipt {
@@ -9,7 +10,7 @@ public class Receipt {
     private double receiptValue;
 
 
-    public Receipt(int receiptID, Date receiptDate, double receiptValue) {
+    public Receipt(int receiptID, Date receiptDate, double receiptValue, List<Product> productList) {
         this.receiptID = receiptID;
         this.receiptDate = receiptDate;
         this.receiptValue = receiptValue;

@@ -10,21 +10,19 @@ import java.util.List;
 public class ReceiptsFromDB {
 
     public static List<Receipt> receiptsList = new ArrayList<>();
+    public static List<Product> productsList = new ArrayList<>();
 
-    public List getProductsFromDBToSingleReceipt(int receiptID) {
-        List<Product> productsList = null;
+    public static void  getProductsFromDBToSingleReceipt(int receiptID) {
         String sqlQuery = "SELECT * FROM RecPar JOIN Products ON RecPar.ProductID = Products.ID JOIN Receipts ON RecPar.ReceiptID = Receipts.ID WHERE Receipts.ID = " + receiptID + ";";
         try {
             Statement statement = DBConnector.CONNECTION.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlQuery);
             while (resultSet.next()) {
-                productsList.add(new Product(resultSet.getInt(4), resultSet.getLong(5), resultSet.getString(6), resultSet.getDouble(7), resultSet.getDouble(8), resultSet.getInt(9)));
+                productsList.add(new Product(resultSet.getInt("ID"), resultSet.getLong("EAN"), resultSet.getString("ProductName"), resultSet.getDouble("PurchasePrice"), resultSet.getDouble("NetPrice"), resultSet.getInt("Vat")));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return productsList;
     }
 
     public static void getReceiptsListFromDB(){
@@ -42,7 +40,8 @@ public class ReceiptsFromDB {
                     double grossProductValue = resultSet.getDouble("NetPrice") * (1 + (resultSet.getDouble("Vat") / 100));
                     grossValue = grossValue + grossProductValue;
                 }
-                receiptsList.add(new Receipt(i, date, grossValue));
+                getProductsFromDBToSingleReceipt(i);
+                receiptsList.add(new Receipt(i, date, grossValue, productsList));
             }
        }
        catch (SQLException ex){
