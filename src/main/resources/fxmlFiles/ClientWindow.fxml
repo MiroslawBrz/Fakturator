@@ -17,7 +17,7 @@
       <TextField fx:id="companyPostalCode" layoutX="312.0" layoutY="87.0" prefHeight="25.0" prefWidth="164.0" />
       <TextField fx:id="companyNIP" layoutX="14.0" layoutY="200.0" prefHeight="25.0" prefWidth="462.0" />
       <Label layoutX="14.0" layoutY="183.0" text="NIP" />
-      <Button layoutX="21.0" layoutY="255.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="102.0" text="anuluj" />
+      <Button fx:id="closeWindow" layoutX="21.0" layoutY="255.0" mnemonicParsing="false" onAction="#closeButtonAction" prefHeight="77.0" prefWidth="102.0" text="anuluj" />
       <Button fx:id="saveCompany" layoutX="138.0" layoutY="255.0" mnemonicParsing="false" onAction="#saveAndAddNewCompany" prefHeight="77.0" prefWidth="102.0" text="zapisz" />
       <Label fx:id="infoAfterSave" layoutX="21.0" layoutY="346.0" prefHeight="32.0" prefWidth="462.0" />
       <Label fx:id="companyNameLabel" layoutX="478.0" layoutY="35.0" text="OK" textFill="#2fe40f" />
@@ -25,7 +25,7 @@
       <Label fx:id="companyPostalCodeLabel" layoutX="478.0" layoutY="91.0" text="OK" textFill="#2fe40f" />
       <Label fx:id="companyCityLabel" layoutX="478.0" layoutY="143.0" text="OK" textFill="#2fe40f" />
       <Label fx:id="companyNipLabel" layoutX="478.0" layoutY="204.0" text="OK" textFill="#2fe40f" />
-      <Button fx:id="saveCompany1" layoutX="253.0" layoutY="255.0" mnemonicParsing="false" onAction="#updateCompany" prefHeight="77.0" prefWidth="102.0" text="aktualizuj" />
+      <Button fx:id="updateCompanyButton" layoutX="253.0" layoutY="255.0" mnemonicParsing="false" onAction="#updateCompany" prefHeight="77.0" prefWidth="102.0" text="aktualizuj" />
       <Button fx:id="findCompanyButton" layoutX="374.0" layoutY="255.0" mnemonicParsing="false" onAction="#findCompanyInKRSByNIP" prefHeight="77.0" prefWidth="102.0" text="znajdź po nipie" />
    </children>
 </Pane>

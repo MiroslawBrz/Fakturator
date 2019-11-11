@@ -2,6 +2,7 @@ package controllers;
 
 import DB.CompanyToDB;
 import data.JSON;
+import javafx.stage.Stage;
 import properties.CompanyProperties;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,6 +12,10 @@ import javafx.scene.control.TextField;
 
 public class ClientWindowController {
 
+    @FXML
+    private Button closeWindow;
+    @FXML
+    private Button updateCompanyButton;
     @FXML
     private TextField companyName;
     @FXML
@@ -56,6 +61,7 @@ public class ClientWindowController {
         companyNipLabel.visibleProperty().bind(companyProperties.isCompanyNIPOkProperty());
         saveCompany.disableProperty().bind(companyProperties.isButtonProperty());
         findCompanyButton.disableProperty().bind((companyProperties.isButtonFindProperty()));
+        updateCompanyButton.disableProperty().bind((companyProperties.isButtonFindProperty()));
     }
 
 
@@ -92,6 +98,10 @@ public class ClientWindowController {
         CompanyToDB companyToDB = new CompanyToDB();
         companyToDB.updateNewCompany(name, street, postalCode, city, NIP);
         infoAfterSave.setText(companyToDB.messege);
+    }
+    public void closeButtonAction(){
+        Stage stage = (Stage) closeWindow.getScene().getWindow();
+        stage.close();
     }
 
 }

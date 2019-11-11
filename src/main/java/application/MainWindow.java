@@ -13,8 +13,6 @@ public class MainWindow extends Application {
     public static void main(String[] args)  {
 
        DBConnector.connect();
-       CompanyFromDB companyFromDB = new CompanyFromDB();
-       companyFromDB.getCompanyListFromDB();
        launch(args);
     }
 

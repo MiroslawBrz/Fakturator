@@ -11,7 +11,7 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainWindowController">
    <children>
-      <Button fx:id="FV" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="Wystaw fakturę" StackPane.alignment="TOP_LEFT">
+      <Button fx:id="FV" mnemonicParsing="false" onAction="#addInvoiceWindow" prefHeight="80.0" prefWidth="100.0" text="Wystaw fakturę" StackPane.alignment="TOP_LEFT">
          <StackPane.margin>
             <Insets left="40.0" top="60.0" />
          </StackPane.margin>
@@ -36,7 +36,7 @@
             <Insets left="160.0" top="500.0" />
          </StackPane.margin>
       </Button>
-      <TableView fx:id="CompaniesTable"  prefHeight="200.0" prefWidth="200.0" StackPane.alignment="TOP_LEFT">
+      <TableView fx:id="CompaniesTable" prefHeight="200.0" prefWidth="200.0" StackPane.alignment="TOP_LEFT">
          <columns>
             <TableColumn fx:id="CompanyNIPColumn" prefWidth="75.0" text="NIP" />
             <TableColumn fx:id="CompanyNameColumn" prefWidth="174.0" text="NAZWA" />

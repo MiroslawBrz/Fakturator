@@ -1,6 +1,7 @@
 package controllers;
 import DB.Company;
 import DB.CompanyFromDB;
+import DB.ReceiptsFromDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,6 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class MainWindowController {
     @FXML
@@ -34,13 +36,12 @@ public class MainWindowController {
     private ObservableList <Company> data = FXCollections.observableArrayList();
 
     public void initialize() {
-        CompaniesTable.setItems(data);
+
         this.CompanyNIPColumn.setCellValueFactory(new PropertyValueFactory<>("NIP"));
         this.CompanyNameColumn.setCellValueFactory(new PropertyValueFactory<>("companyName"));
         this.companyCity.setCellValueFactory(new PropertyValueFactory<>("companyCity"));
         this.companyStreet.setCellValueFactory(new PropertyValueFactory<>("companyStreet"));
         this.companyPostalCode.setCellValueFactory(new PropertyValueFactory<>("companyPostalCode"));
-        refreshListFromDB();
 
         CompaniesTable.setRowFactory(tv -> {
             TableRow<Company> row = new TableRow<>();
@@ -61,10 +62,15 @@ public class MainWindowController {
     }
 
     public void refreshListFromDB(){
+
+        CompanyFromDB companyFromDB = new CompanyFromDB();
+        companyFromDB.getCompanyListFromDB();
         data.clear();
-        for (Object comp : CompanyFromDB.list){
+        for (Object comp : CompanyFromDB.companyList){
             data.add((Company) comp);
         }
+        CompaniesTable.setItems(data);
+
     }
 
     public void addClientWindow() throws IOException {
@@ -81,6 +87,11 @@ public class MainWindowController {
         stage.setTitle("Wprowadź dane klienta");
         stage.setScene(new Scene(root));
         stage.show();
+    }
+
+    public void addInvoiceWindow() throws SQLException {
+        ReceiptsFromDB.getReceiptsListFromDB();
+        System.out.println(ReceiptsFromDB.receiptsList.toString());
     }
 
 

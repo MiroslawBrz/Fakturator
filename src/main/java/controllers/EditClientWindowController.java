@@ -4,6 +4,7 @@ import DB.Company;
 import DB.CompanyToDB;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -23,6 +24,8 @@ public class EditClientWindowController {
     private Button saveCompany;
     @FXML
     private Button closeWindow;
+    @FXML
+    private Label infoAfterUpdate;
 
     public void closeButtonAction(){
         Stage stage = (Stage) closeWindow.getScene().getWindow();
@@ -35,6 +38,7 @@ public class EditClientWindowController {
         this.companyCity.textProperty().setValue(Company.COMPANY_CITY);
         this.companyPostalCode.textProperty().setValue((Company.COMPANY_POSTALCODE));
         this.companyStreet.textProperty().setValue(Company.COMPANY_STREET);
+        this.companyNIP.setDisable(true);
     }
 
     public void updateCompany() {
@@ -45,6 +49,7 @@ public class EditClientWindowController {
         String city = companyCity.getText();
         CompanyToDB companyToDB = new CompanyToDB();
         companyToDB.updateNewCompany(name, street, postalCode, city, NIP);
+        infoAfterUpdate.setText(companyToDB.messege);
     }
 
 }
