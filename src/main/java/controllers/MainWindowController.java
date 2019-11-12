@@ -29,6 +29,8 @@ public class MainWindowController {
     @FXML
     private TableView<Company> CompaniesTable;
     @FXML
+    private Button FV;
+    @FXML
     private Button closeButton;
     @FXML
     private Button edit;
@@ -50,6 +52,7 @@ public class MainWindowController {
                         && event.getClickCount() == 1) {
                     Company clickedRow = row.getItem();
                     edit.setDisable(false);
+                    FV.setDisable(false);
                     Company.sNIP = clickedRow.getNIP();
                     Company.COMPANY_NAME = clickedRow.getCompanyName();
                     Company.COMPANY_CITY = clickedRow.getCompanyCity();
@@ -89,9 +92,12 @@ public class MainWindowController {
         stage.show();
     }
 
-    public void addInvoiceWindow() throws SQLException {
-        ReceiptsFromDB.getReceiptsListFromDB();
-        System.out.println(ReceiptsFromDB.receiptsList.toString());
+    public void addInvoiceWindow() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxmlFiles/AddInvoiceWindow.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("Wystaw fakturę vat");
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
 

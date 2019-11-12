@@ -1,6 +1,5 @@
 package application;
 
-import DB.CompanyFromDB;
 import DB.DBConnector;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -12,7 +12,8 @@ public class ReceiptsFromDB {
     public static List<Receipt> receiptsList = new ArrayList<>();
     public static List<Product> productsList = new ArrayList<>();
 
-    public static void  getProductsFromDBToSingleReceipt(int receiptID) {
+    public void getProductsFromDBToSingleReceipt(int receiptID) {
+        productsList.clear();
         String sqlQuery = "SELECT * FROM RecPar JOIN Products ON RecPar.ProductID = Products.ID JOIN Receipts ON RecPar.ReceiptID = Receipts.ID WHERE Receipts.ID = " + receiptID + ";";
         try {
             Statement statement = DBConnector.CONNECTION.createStatement();
@@ -25,7 +26,8 @@ public class ReceiptsFromDB {
         }
     }
 
-    public static void getReceiptsListFromDB(){
+    public void getReceiptsListFromDB(){
+        receiptsList.clear();
        try {
            String sqlQuery = "SELECT * FROM RecPar JOIN Products ON RecPar.ProductID = Products.ID JOIN Receipts ON RecPar.ReceiptID = Receipts.ID where Receipts.ID = ";
            Statement statement = DBConnector.CONNECTION.createStatement();
@@ -50,7 +52,7 @@ public class ReceiptsFromDB {
     }
 
     private static int getReceiptTableSize() {
-        String sqlQuery = "SELECT COUNT (*) FROM RecPar";
+        String sqlQuery = "SELECT COUNT (DISTINCT ReceiptID) FROM RecPar";
         int tableSize = 0;
         try {
             Statement statement = DBConnector.CONNECTION.createStatement();

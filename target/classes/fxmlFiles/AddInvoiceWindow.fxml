@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="353.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="353.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddInvoiceWindowController">
    <children>
       <Label layoutX="14.0" layoutY="14.0" prefHeight="35.0" prefWidth="174.0" text="Wpisz numer paragonu:">
          <font>
@@ -29,7 +28,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Button fx:id="addReceiptToInvoiceButton" layoutX="14.0" layoutY="411.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Dodaj paragon do FV" />
-      <Button fx:id="getInvoiceButton" layoutX="177.0" layoutY="411.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Wystaw fakturę" />
+      <Button fx:id="addReceiptToInvoiceButton" layoutX="14.0" layoutY="411.0" mnemonicParsing="false" onAction="#addReceiptToInvoice" prefHeight="25.0" prefWidth="149.0" text="Dodaj paragon do FV" />
+      <Button fx:id="getInvoiceButton" disable="true" layoutX="177.0" layoutY="411.0" mnemonicParsing="false" onAction="#addInvoice" prefHeight="25.0" prefWidth="149.0" text="Wystaw fakturę" />
    </children>
 </Pane>
