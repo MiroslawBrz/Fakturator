@@ -74,7 +74,9 @@ public class AddInvoiceWindowController {
     }
 
     public void addInvoice(){
-        //Invoice invoice = new Invoice(receipt, new Company(Company.sNIP, Company.COMPANY_NAME, Company.COMPANY_STREET, Company.COMPANY_CITY, Company.COMPANY_POSTALCODE));
-        //InvoiceList.invoices.add(invoice);
+        Invoice invoice = new Invoice(receipt, new Company(Company.sNIP, Company.COMPANY_NAME, Company.COMPANY_STREET, Company.COMPANY_CITY, Company.COMPANY_POSTALCODE));
+        InvoiceList.invoices.add(invoice);
+        InvoiceToDB invoiceToDB = new InvoiceToDB();
+        invoiceToDB.addInvoiceToDB(invoice);
     }
 }
