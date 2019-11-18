@@ -1,4 +1,4 @@
-package DB;
+package data;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -41,6 +41,9 @@ public class ReceiptsFromDB {
                     date = resultSet.getDate("saleDate");
                     double grossProductValue = resultSet.getDouble("NetPrice") * (1 + (resultSet.getDouble("Vat") / 100));
                     grossValue = grossValue + grossProductValue;
+                    grossValue = grossValue*100;
+                    grossValue = Math.round(grossValue);
+                    grossValue = grossValue/100;
                 }
                 getProductsFromDBToSingleReceipt(i);
                 receiptsList.add(new Receipt(i, date, grossValue, productsList));

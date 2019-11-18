@@ -1,7 +1,7 @@
 package controllers;
 
-import DB.CompanyToDB;
-import data.JSON;
+import API.JSON;
+import data.DBConnector;
 import javafx.stage.Stage;
 import properties.CompanyProperties;
 import javafx.fxml.FXML;
@@ -43,10 +43,9 @@ public class ClientWindowController {
     @FXML
     private Button findCompanyButton;
 
-
-
-
     private CompanyProperties companyProperties = new CompanyProperties();
+    private DBConnector.CompanyToDB companyToDB = new DBConnector.CompanyToDB();
+    private JSON json = new JSON();
 
     public void initialize(){
         companyName.textProperty().bindBidirectional(companyProperties.getCompanyNameProperty());
@@ -66,23 +65,12 @@ public class ClientWindowController {
 
 
     public void saveAndAddNewCompany() {
-        CompanyToDB companyToDB = new CompanyToDB();
-        String name = companyName.getText();
-        String NIP = companyNIP.getText();
-        String street = companyStreet.getText();
-        String postalCode = companyPostalCode.getText();
-        String city = companyCity.getText();
-
-        companyToDB.saveNewCompany(name, street, postalCode, city, NIP);
+        companyToDB.saveNewCompany(companyName.getText(), companyNIP.getText(), companyPostalCode.getText(), companyCity.getText(), companyNIP.getText());
         infoAfterSave.setText(companyToDB.messege);
-
-
     }
 
     public void findCompanyInKRSByNIP(){
-        JSON json = new JSON();
-        String s = companyNIP.getText();
-        json.getStringFromAPIbyNIPAndParseJson(s);
+        json.getStringFromAPIbyNIPAndParseJson(companyNIP.getText());
         companyName.textProperty().bindBidirectional(json.getName());
         companyStreet.textProperty().bindBidirectional(json.getStreet());
         companyCity.textProperty().bindBidirectional(json.getCity());
@@ -90,15 +78,10 @@ public class ClientWindowController {
     }
 
     public void updateCompany() {
-        String name = companyName.getText();
-        String NIP = companyNIP.getText();
-        String street = companyStreet.getText();
-        String postalCode = companyPostalCode.getText();
-        String city = companyCity.getText();
-        CompanyToDB companyToDB = new CompanyToDB();
-        companyToDB.updateNewCompany(name, street, postalCode, city, NIP);
+        companyToDB.updateNewCompany(companyName.getText(), companyNIP.getText(), companyPostalCode.getText(), companyCity.getText(), companyNIP.getText());
         infoAfterSave.setText(companyToDB.messege);
     }
+
     public void closeButtonAction(){
         Stage stage = (Stage) closeWindow.getScene().getWindow();
         stage.close();

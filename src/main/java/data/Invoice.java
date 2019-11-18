@@ -1,4 +1,4 @@
-package DB;
+package data;
 
 public class Invoice {
 

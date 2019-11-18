@@ -1,7 +1,7 @@
 package controllers;
 
-import DB.Company;
-import DB.CompanyToDB;
+import data.Company;
+import data.DBConnector;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -47,7 +47,7 @@ public class EditClientWindowController {
         String street = companyStreet.getText();
         String postalCode = companyPostalCode.getText();
         String city = companyCity.getText();
-        CompanyToDB companyToDB = new CompanyToDB();
+        DBConnector.CompanyToDB companyToDB = new DBConnector.CompanyToDB();
         companyToDB.updateNewCompany(name, street, postalCode, city, NIP);
         infoAfterUpdate.setText(companyToDB.messege);
     }

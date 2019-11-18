@@ -30,5 +30,6 @@
       </Label>
       <Button fx:id="addReceiptToInvoiceButton" layoutX="14.0" layoutY="411.0" mnemonicParsing="false" onAction="#addReceiptToInvoice" prefHeight="25.0" prefWidth="149.0" text="Dodaj paragon do FV" />
       <Button fx:id="getInvoiceButton" disable="true" layoutX="177.0" layoutY="411.0" mnemonicParsing="false" onAction="#addInvoice" prefHeight="25.0" prefWidth="149.0" text="Wystaw fakturę" />
+      <Label fx:id="infoAfterAddReceipt" layoutX="22.0" layoutY="376.0" prefHeight="17.0" prefWidth="202.0" />
    </children>
 </Pane>

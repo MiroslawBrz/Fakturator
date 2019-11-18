@@ -1,5 +1,5 @@
 package controllers;
-import DB.*;
+import data.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -21,13 +21,15 @@ public class AddInvoiceWindowController {
     @FXML
     private TextField receiptTextField;
     @FXML
-    private Button addReceiptToInvoiceButton;
-    @FXML
     private Button getInvoiceButton;
+    @FXML
+    private Label infoAfterAddReceipt;
 
     private ObservableList<Receipt> data = FXCollections.observableArrayList();
 
     private Receipt receipt;
+    private ReceiptsFromDB receiptsFromDB = new ReceiptsFromDB();
+    private InvoiceToDB invoiceToDB = new InvoiceToDB();
 
     public void initialize() {
         receiptTable.setRowFactory(tv -> {
@@ -44,7 +46,6 @@ public class AddInvoiceWindowController {
         this.receiptNoTableColumn.setCellValueFactory(new PropertyValueFactory<>("receiptID"));
         this.receiptDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("receiptDate"));
         this.receiptValueColumnTable.setCellValueFactory(new PropertyValueFactory<>("receiptValue"));
-        ReceiptsFromDB receiptsFromDB = new ReceiptsFromDB();
         receiptsFromDB.getReceiptsListFromDB();
         data.clear();
         for(Object rec : ReceiptsFromDB.receiptsList){
@@ -53,22 +54,24 @@ public class AddInvoiceWindowController {
         this.receiptTable.setItems(data);
     }
     public void addReceiptToInvoice(){
+
         int receiptID = 0;
         try{
-            receiptID = Integer.parseInt(receiptTextField.getText());
+        receiptID = Integer.parseInt(receiptTextField.getText());
+        }catch (NumberFormatException e){
+            e.printStackTrace();
         }
-        catch (NumberFormatException ex){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Komunikat");
-            alert.setHeaderText("Information Alert");
-            String s ="Nie istnieje paragon o podanym ID lub ID nie zostało podane";
-            alert.setContentText(s);
-            alert.show();
-        }
+
         for(Receipt r : ReceiptsFromDB.receiptsList){
             if(r.getReceiptID() == receiptID){
                 receipt = r;
             }
+        }
+        if(receipt==null){
+            infoAfterAddReceipt.setText("Nie znaleziono paragonu o podanym numerze");
+        }
+        else{
+            infoAfterAddReceipt.setText("Poprawnie dodano paragon");
         }
         getInvoiceButton.setDisable(false);
     }
@@ -76,7 +79,6 @@ public class AddInvoiceWindowController {
     public void addInvoice(){
         Invoice invoice = new Invoice(receipt, new Company(Company.sNIP, Company.COMPANY_NAME, Company.COMPANY_STREET, Company.COMPANY_CITY, Company.COMPANY_POSTALCODE));
         InvoiceList.invoices.add(invoice);
-        InvoiceToDB invoiceToDB = new InvoiceToDB();
         invoiceToDB.addInvoiceToDB(invoice);
     }
 }

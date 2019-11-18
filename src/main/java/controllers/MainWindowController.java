@@ -1,7 +1,6 @@
 package controllers;
-import DB.Company;
-import DB.CompanyFromDB;
-import DB.ReceiptsFromDB;
+import data.Company;
+import data.CompanyFromDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,7 +12,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class MainWindowController {
     @FXML
